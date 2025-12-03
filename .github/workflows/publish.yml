@@ -1,0 +1,26 @@
+name: Deploy API Workflow
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: 'Tag to deploy (e.g. stgn-v1.0.3)'
+        required: false
+  
+jobs:
+  reusable_workflow_job:
+    uses: jopitnow/reusable-action-apis/.github/workflows/publish.yml@v2.0.1
+    secrets: inherit
+    with:
+      dockerfile_image: "jopit-api-items"
+      dockerfile_prefix: "jopit_api_items"
+      release_tag: ${{ github.event.release.tag_name || github.event.inputs.release_tag }}
+      release_title: ${{ github.event.release.name || 'Manually triggered' }}
+      release_body: ${{ github.event.release.body || '' }}
+      release_url: ${{ github.event.release.html_url || '' }}
+      release_author: ${{ github.actor }}
+      repository_name: ${{ github.event.repository.name }}
+      mongodb_conn_string: "MONGODB_CONN_STRING_ITEMS"
+      staging_mongodb_conn_string: "STAGING_MONGODB_CONN_STRING_ITEMS"

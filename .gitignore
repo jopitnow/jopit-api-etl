@@ -1,0 +1,11 @@
+# Folders
+src/tests/internal/log
+vendor/
+
+# Files
+coverage.out
+app.env
+
+# IDE'S
+.vscode/
+.idea/

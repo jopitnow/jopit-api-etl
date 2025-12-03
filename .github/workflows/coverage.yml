@@ -1,0 +1,25 @@
+name: Go Coverage Check
+run-name: coverage
+
+on:
+  pull_request:
+    branches: [ "master", "develop" ]
+
+jobs:
+  coverage:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-go@v3
+
+      - name: Generate test coverage
+        run: go test -v -coverprofile=./coverage.out -covermode=atomic -coverpkg ./src/main/domain/... ./...
+
+      - name: Check test coverage
+        uses: vladopajic/go-test-coverage@v2
+        with:
+          profile: coverage.out
+          threshold-file: 80
+          threshold-package: 80
+          threshold-total: 80

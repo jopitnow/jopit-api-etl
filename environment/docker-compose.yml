@@ -1,0 +1,23 @@
+version: '2.1'
+
+services:
+    jopit-api-items:
+      container_name: jopit-api-items
+      image: jopitnow/jopit-api-items:${DEPLOY_ENVIRONMENT}
+      restart: always
+      volumes:
+        - /log/jopit_api_items:/var/log/jopit
+      environment:
+        DEPLOY_ENVIRONMENT: ${DEPLOY_ENVIRONMENT}
+        MONGODB_CONN_STRING: ${MONGODB_CONN_STRING}
+        ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+        ADMIN_USERNAME: ${ADMIN_USERNAME}
+        FIREBASE_CREDENTIALS: ${FIREBASE_CREDENTIALS}
+      ports:
+        - "8009:8080"
+      networks:
+        - "jopitnet"
+
+networks:
+  jopitnet:
+    external: true

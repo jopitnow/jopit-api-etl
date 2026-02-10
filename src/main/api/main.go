@@ -1,13 +1,6 @@
 package main
 
 import (
-	"context"
-	"log"
-
-	toolkitpkg "github.com/jopitnow/go-jopit-toolkit/gingonic/handlers"
-
-	"github.com/jopitnow/go-jopit-toolkit/telemetry"
-
 	"github.com/jopitnow/jopit-api-etl/src/main/api/app"
 	"github.com/jopitnow/jopit-api-etl/src/main/api/config"
 )
@@ -26,39 +19,6 @@ import (
 func main() {
 
 	config.Load()
-
-	shutdown, err := telemetry.InitTracerExporter(toolkitpkg.ApiName)
-	if err != nil {
-		log.Printf("failed to initialize tracer: %v", err)
-	}
-	// Ensure that all spans are flushed before the application exits.
-	defer func() {
-		if err := shutdown(context.Background()); err != nil {
-			log.Printf("failed to shutdown tracer provider: %v", err)
-		}
-	}()
-
-	shutdown, err = telemetry.InitLoggerExporter(toolkitpkg.ApiName)
-	if err != nil {
-		log.Printf("failed to initialize tracer: %v", err)
-	}
-	// Ensure that all spans are flushed before the application exits.
-	defer func() {
-		if err := shutdown(context.Background()); err != nil {
-			log.Printf("failed to shutdown tracer provider: %v", err)
-		}
-	}()
-
-	shutdown, err = telemetry.InitMeterExporter(toolkitpkg.ApiName)
-	if err != nil {
-		log.Printf("failed to initialize tracer: %v", err)
-	}
-	// Ensure that all spans are flushed before the application exits.
-	defer func() {
-		if err := shutdown(context.Background()); err != nil {
-			log.Printf("failed to shutdown tracer provider: %v", err)
-		}
-	}()
 
 	app.Start()
 }

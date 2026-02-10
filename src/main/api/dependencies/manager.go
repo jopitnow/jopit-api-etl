@@ -9,6 +9,7 @@ import (
 
 const (
 	KvsCompanyLayoutCollection = "company-layout"
+	KvsMercadoLibreCredentials = "mercadolibre-credentials"
 )
 
 type DependencyManager struct {
@@ -27,4 +28,8 @@ func NewDependencyManager() DependencyManager {
 
 func (m DependencyManager) CompanyLayoutRepository() repositories.CompanyLayoutRepository {
 	return repositories.NewCompanyLayoutRepository(m.NewCollection(KvsCompanyLayoutCollection))
+}
+
+func (m DependencyManager) MercadoLibreCredentialsRepository() repositories.MercadoLibreCredentialsRepository {
+	return repositories.NewMercadoLibreCredentialsRepository(m.NewCollection(KvsMercadoLibreCredentials))
 }

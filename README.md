@@ -76,3 +76,20 @@ Test full project and generate coverage:
 ## Telemetry
 
 At the moment Traces and Logs has been enabled to track and push to Grafana Cloud.  
+
+## MercadoLibre auth flow (plain English)
+
+Here is the short, no-code version of how the MercadoLibre OAuth flow works in this project:
+
+1. The user clicks "Connect MercadoLibre" in the UI.
+2. The frontend asks the ETL API for the MercadoLibre login URL.
+3. The ETL API builds that URL and returns it.
+4. The frontend redirects the user to MercadoLibre to log in and approve access.
+5. MercadoLibre redirects the user back with a temporary code.
+6. The frontend sends that code to the ETL API.
+7. The ETL API exchanges the code for an access token and refresh token.
+8. The ETL API stores those tokens in MongoDB.
+9. When we need to call MercadoLibre, we read the token from MongoDB.
+10. If the token is close to expiring, the API refreshes it automatically and saves the new one.
+
+In short: the browser never stores tokens, only the backend does, and it keeps them fresh for you.

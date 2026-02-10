@@ -21,22 +21,24 @@ const (
 
 var (
 	InternalBaseItemsClient = "http://jopit-api-items:8080"
-	InternalBaseShopsClient = "http://jopit-api-shops:8080"
+	InternalBaseShopsClient = "http://localhost:8081"
 )
 
 // Configuration structure
 type Configuration struct {
-	APIRestServerHost     string `mapstructure:"jopit_api_host"`
-	APIRestServerPort     string `mapstructure:"jopit_api_port"`
-	APIRestUsername       string `mapstructure:"jopit_api_username"`
-	APIRestPassword       string `mapstructure:"jopit_api_password"`
-	APIBaseEndpoint       string `mapstructure:"jopit_api_base_endpoint"`
-	LoggingPath           string `mapstructure:"jopit_api_logpath"`
-	LoggingFile           string `mapstructure:"jopit_api_logfile"`
-	LoggingLevel          string `mapstructure:"jopit_api_loglevel"`
-	MongoConnectionString string `mapstructure:"MONGODB_CONN_STRING"`
-	AdminPassword         string
-	AdminUsername         string
+	APIRestServerHost        string `mapstructure:"jopit_api_host"`
+	APIRestServerPort        string `mapstructure:"jopit_api_port"`
+	APIRestUsername          string `mapstructure:"jopit_api_username"`
+	APIRestPassword          string `mapstructure:"jopit_api_password"`
+	APIBaseEndpoint          string `mapstructure:"jopit_api_base_endpoint"`
+	LoggingPath              string `mapstructure:"jopit_api_logpath"`
+	LoggingFile              string `mapstructure:"jopit_api_logfile"`
+	LoggingLevel             string `mapstructure:"jopit_api_loglevel"`
+	MongoConnectionString    string `mapstructure:"MONGODB_CONN_STRING"`
+	MercadolibreClientId     string `mapstructure:"MERCADOLIBRE_CLIENT_ID"`
+	MercadolibreClientSecret string `mapstructure:"MERCADOLIBRE_CLIENT_SECRET"`
+	AdminPassword            string
+	AdminUsername            string
 }
 
 // ConfMap Config is package struct containing conf params
@@ -77,6 +79,16 @@ func Load() {
 		log.Fatal("ADMIN_PASSWORD is empty)")
 	}
 	ConfMap.AdminPassword = os.Getenv("ADMIN_PASSWORD")
+
+	if os.Getenv("MERCADOLIBRE_CLIENT_ID") == "" {
+		log.Fatal("MERCADOLIBRE_CLIENT_ID is empty)")
+	}
+	ConfMap.MercadolibreClientId = os.Getenv("MERCADOLIBRE_CLIENT_ID")
+
+	if os.Getenv("MERCADOLIBRE_CLIENT_SECRET") == "" {
+		log.Fatal("MERCADOLIBRE_CLIENT_SECRET is empty)")
+	}
+	ConfMap.MercadolibreClientSecret = os.Getenv("MERCADOLIBRE_CLIENT_SECRET")
 
 	toolkitpkg.ApiName = "items"
 

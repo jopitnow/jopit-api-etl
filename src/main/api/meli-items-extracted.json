@@ -1,0 +1,1041 @@
+[
+  {
+    "id": "MLA2847710648",
+    "site_id": "MLA",
+    "title": "Remera Retro Hombre Los Pumas",
+    "seller_id": 3185982366,
+    "category_id": "MLA109042",
+    "price": 90000,
+    "base_price": 90000,
+    "original_price": null,
+    "currency_id": "ARS",
+    "initial_quantity": 26,
+    "available_quantity": 26,
+    "sold_quantity": 0,
+    "sale_terms": [
+      {
+        "id": "WARRANTY_TYPE",
+        "name": "Tipo de garantía",
+        "value_id": "6150835",
+        "value_name": "Sin garantía",
+        "value_struct": null,
+        "value_type": "list",
+        "values": [
+          {
+            "id": "6150835",
+            "name": "Sin garantía",
+            "struct": null
+          }
+        ]
+      }
+    ],
+    "buying_mode": "buy_it_now",
+    "listing_type_id": "gold_special",
+    "start_time": "2026-02-09T15:11:48.500Z",
+    "stop_time": "2046-02-04T04:00:00.000Z",
+    "end_time": "2046-02-04T04:00:00.000Z",
+    "expiration_time": "2026-04-30T15:35:41.438Z",
+    "condition": "new",
+    "permalink": "https://articulo.mercadolibre.com.ar/MLA-2847710648-remera-retro-hombre-los-pumas-_JM",
+    "thumbnail_id": "809049-MLA106292095942_022026",
+    "thumbnail": "http://http2.mlstatic.com/D_809049-MLA106292095942_022026-I.jpg",
+    "pictures": [
+      {
+        "id": "809049-MLA106292095942_022026",
+        "url": "http://http2.mlstatic.com/D_809049-MLA106292095942_022026-O.jpg",
+        "secure_url": "https://http2.mlstatic.com/D_809049-MLA106292095942_022026-O.jpg",
+        "size": "406x500",
+        "max_size": "976x1200",
+        "quality": ""
+      },
+      {
+        "id": "651212-MLA106292336684_022026",
+        "url": "http://http2.mlstatic.com/D_651212-MLA106292336684_022026-O.jpg",
+        "secure_url": "https://http2.mlstatic.com/D_651212-MLA106292336684_022026-O.jpg",
+        "size": "500x412",
+        "max_size": "1200x989",
+        "quality": ""
+      }
+    ],
+    "video_id": null,
+    "descriptions": [],
+    "accepts_mercadopago": true,
+    "shipping": {
+      "mode": "me2",
+      "methods": [],
+      "tags": [
+        "local_pick_up_not_allowed",
+        "mandatory_free_shipping"
+      ],
+      "dimensions": null,
+      "local_pick_up": false,
+      "free_shipping": true,
+      "logistic_type": "xd_drop_off",
+      "store_pick_up": false
+    },
+    "attributes": [
+      {
+        "id": "GIFTABLE",
+        "name": "Regalable",
+        "value_id": "54973164",
+        "value_name": "vppfull",
+        "value_struct": null,
+        "values": [
+          {
+            "id": "54973164",
+            "name": "vppfull",
+            "struct": null
+          }
+        ],
+        "value_type": "string"
+      },
+      {
+        "id": "AGE_GROUP",
+        "name": "Edad",
+        "value_id": "6725189",
+        "value_name": "Adultos",
+        "value_struct": null,
+        "values": [
+          {
+            "id": "6725189",
+            "name": "Adultos",
+            "struct": null
+          }
+        ],
+        "value_type": "list"
+      },
+      {
+        "id": "BRAND",
+        "name": "Marca",
+        "value_id": "35926039",
+        "value_name": "Genérico",
+        "value_struct": null,
+        "values": [
+          {
+            "id": "35926039",
+            "name": "Genérico",
+            "struct": null
+          }
+        ],
+        "value_type": "string"
+      },
+      {
+        "id": "COMPOSITION",
+        "name": "Composición",
+        "value_id": "466793",
+        "value_name": "Algodón",
+        "value_struct": null,
+        "values": [
+          {
+            "id": "466793",
+            "name": "Algodón",
+            "struct": null
+          }
+        ],
+        "value_type": "string"
+      },
+      {
+        "id": "FABRIC_TYPE",
+        "name": "Tipo de tela",
+        "value_id": "12039023",
+        "value_name": "Gabardina",
+        "value_struct": null,
+        "values": [
+          {
+            "id": "12039023",
+            "name": "Gabardina",
+            "struct": null
+          }
+        ],
+        "value_type": "string"
+      },
+      {
+        "id": "GARMENT_TYPE",
+        "name": "Tipo de prenda",
+        "value_id": "12038970",
+        "value_name": "Remera",
+        "value_struct": null,
+        "values": [
+          {
+            "id": "12038970",
+            "name": "Remera",
+            "struct": null
+          }
+        ],
+        "value_type": "list"
+      },
+      {
+        "id": "GENDER",
+        "name": "Género",
+        "value_id": "339666",
+        "value_name": "Hombre",
+        "value_struct": null,
+        "values": [
+          {
+            "id": "339666",
+            "name": "Hombre",
+            "struct": null
+          }
+        ],
+        "value_type": "list"
+      },
+      {
+        "id": "IS_EMERGING_BRAND",
+        "name": "Es marca emergente",
+        "value_id": "242084",
+        "value_name": "No",
+        "value_struct": null,
+        "values": [
+          {
+            "id": "242084",
+            "name": "No",
+            "struct": null
+          }
+        ],
+        "value_type": "boolean"
+      },
+      {
+        "id": "IS_HIGHLIGHT_BRAND",
+        "name": "Es marca destacada",
+        "value_id": "242084",
+        "value_name": "No",
+        "value_struct": null,
+        "values": [
+          {
+            "id": "242084",
+            "name": "No",
+            "struct": null
+          }
+        ],
+        "value_type": "boolean"
+      },
+      {
+        "id": "IS_SPORTIVE",
+        "name": " Es deportiva",
+        "value_id": "242085",
+        "value_name": "Sí",
+        "value_struct": null,
+        "values": [
+          {
+            "id": "242085",
+            "name": "Sí",
+            "struct": null
+          }
+        ],
+        "value_type": "boolean"
+      },
+      {
+        "id": "IS_SUITABLE_FOR_PREGNACY",
+        "name": "Es apta para embarazo",
+        "value_id": "242084",
+        "value_name": "No",
+        "value_struct": null,
+        "values": [
+          {
+            "id": "242084",
+            "name": "No",
+            "struct": null
+          }
+        ],
+        "value_type": "boolean"
+      },
+      {
+        "id": "IS_TOM_BRAND",
+        "name": "Es marca TOM",
+        "value_id": "242084",
+        "value_name": "No",
+        "value_struct": null,
+        "values": [
+          {
+            "id": "242084",
+            "name": "No",
+            "struct": null
+          }
+        ],
+        "value_type": "boolean"
+      },
+      {
+        "id": "ITEM_CONDITION",
+        "name": "Condición del ítem",
+        "value_id": "2230284",
+        "value_name": "Nuevo",
+        "value_struct": null,
+        "values": [
+          {
+            "id": "2230284",
+            "name": "Nuevo",
+            "struct": null
+          }
+        ],
+        "value_type": "list"
+      },
+      {
+        "id": "MAIN_MATERIAL",
+        "name": "Material principal",
+        "value_id": "466793",
+        "value_name": "Algodón",
+        "value_struct": null,
+        "values": [
+          {
+            "id": "466793",
+            "name": "Algodón",
+            "struct": null
+          }
+        ],
+        "value_type": "string"
+      },
+      {
+        "id": "MODEL",
+        "name": "Modelo",
+        "value_id": null,
+        "value_name": "Retro",
+        "value_struct": null,
+        "values": [
+          {
+            "id": null,
+            "name": "Retro",
+            "struct": null
+          }
+        ],
+        "value_type": "string"
+      },
+      {
+        "id": "RECOMMENDED_USES",
+        "name": "Usos recomendados",
+        "value_id": null,
+        "value_name": "Entrenamiento,Rugby",
+        "value_struct": null,
+        "values": [
+          {
+            "id": "34443068",
+            "name": "Entrenamiento",
+            "struct": null
+          },
+          {
+            "id": "22742679",
+            "name": "Rugby",
+            "struct": null
+          }
+        ],
+        "value_type": "string"
+      },
+      {
+        "id": "SALE_FORMAT",
+        "name": "Formato de venta",
+        "value_id": "1359391",
+        "value_name": "Unidad",
+        "value_struct": null,
+        "values": [
+          {
+            "id": "1359391",
+            "name": "Unidad",
+            "struct": null
+          }
+        ],
+        "value_type": "list"
+      },
+      {
+        "id": "SIZE_GRID_ID",
+        "name": "ID de la guía de talles",
+        "value_id": null,
+        "value_name": "4566230",
+        "value_struct": null,
+        "values": [
+          {
+            "id": null,
+            "name": "4566230",
+            "struct": null
+          }
+        ],
+        "value_type": "grid_id"
+      },
+      {
+        "id": "SLEEVE_TYPE",
+        "name": "Tipo de manga",
+        "value_id": "466805",
+        "value_name": "Larga",
+        "value_struct": null,
+        "values": [
+          {
+            "id": "466805",
+            "name": "Larga",
+            "struct": null
+          }
+        ],
+        "value_type": "list"
+      },
+      {
+        "id": "T_SHIRT_COLLAR_TYPE",
+        "name": "Tipo de cuello",
+        "value_id": "-1",
+        "value_name": "",
+        "value_struct": null,
+        "values": [
+          {
+            "id": "-1",
+            "name": "",
+            "struct": null
+          }
+        ],
+        "value_type": "list"
+      },
+      {
+        "id": "WEDGE_SHAPE",
+        "name": "Forma del calce",
+        "value_id": "34241296",
+        "value_name": "Oversized",
+        "value_struct": null,
+        "values": [
+          {
+            "id": "34241296",
+            "name": "Oversized",
+            "struct": null
+          }
+        ],
+        "value_type": "list"
+      },
+      {
+        "id": "WITH_RECYCLED_MATERIALS",
+        "name": "Con materiales reciclados",
+        "value_id": "242084",
+        "value_name": "No",
+        "value_struct": null,
+        "values": [
+          {
+            "id": "242084",
+            "name": "No",
+            "struct": null
+          }
+        ],
+        "value_type": "boolean"
+      }
+    ],
+    "variations": [
+      {
+        "id": 190363099546,
+        "price": 90000,
+        "attribute_combinations": [
+          {
+            "id": "COLOR",
+            "name": "Color",
+            "value_id": "52021",
+            "value_name": "Celeste",
+            "value_struct": null,
+            "values": [
+              {
+                "id": "52021",
+                "name": "Celeste",
+                "struct": null
+              }
+            ],
+            "value_type": "string"
+          },
+          {
+            "id": "FABRIC_DESIGN",
+            "name": "Diseño de la tela",
+            "value_id": "3793854",
+            "value_name": "Bordado",
+            "value_struct": null,
+            "values": [
+              {
+                "id": "3793854",
+                "name": "Bordado",
+                "struct": null
+              }
+            ],
+            "value_type": "string"
+          },
+          {
+            "id": "SIZE",
+            "name": "Talle",
+            "value_id": "433336",
+            "value_name": "XL",
+            "value_struct": null,
+            "values": [
+              {
+                "id": "433336",
+                "name": "XL",
+                "struct": null
+              }
+            ],
+            "value_type": "string"
+          }
+        ],
+        "available_quantity": 25,
+        "sold_quantity": 0,
+        "sale_terms": [],
+        "picture_ids": [
+          "809049-MLA106292095942_022026",
+          "651212-MLA106292336684_022026"
+        ],
+        "seller_custom_field": null,
+        "catalog_product_id": null,
+        "inventory_id": null,
+        "item_relations": [],
+        "user_product_id": "MLAU3778123541"
+      },
+      {
+        "id": 190363099548,
+        "price": 90000,
+        "attribute_combinations": [
+          {
+            "id": "COLOR",
+            "name": "Color",
+            "value_id": "52021",
+            "value_name": "Celeste",
+            "value_struct": null,
+            "values": [
+              {
+                "id": "52021",
+                "name": "Celeste",
+                "struct": null
+              }
+            ],
+            "value_type": "string"
+          },
+          {
+            "id": "FABRIC_DESIGN",
+            "name": "Diseño de la tela",
+            "value_id": "3793854",
+            "value_name": "Bordado",
+            "value_struct": null,
+            "values": [
+              {
+                "id": "3793854",
+                "name": "Bordado",
+                "struct": null
+              }
+            ],
+            "value_type": "string"
+          },
+          {
+            "id": "SIZE",
+            "name": "Talle",
+            "value_id": "10490141",
+            "value_name": "L",
+            "value_struct": null,
+            "values": [
+              {
+                "id": "10490141",
+                "name": "L",
+                "struct": null
+              }
+            ],
+            "value_type": "string"
+          }
+        ],
+        "available_quantity": 1,
+        "sold_quantity": 0,
+        "sale_terms": [],
+        "picture_ids": [
+          "809049-MLA106292095942_022026",
+          "651212-MLA106292336684_022026"
+        ],
+        "seller_custom_field": null,
+        "catalog_product_id": null,
+        "inventory_id": null,
+        "item_relations": [],
+        "user_product_id": "MLAU3778123543"
+      }
+    ],
+    "status": "active",
+    "sub_status": [],
+    "tags": [
+      "good_quality_thumbnail",
+      "test_item",
+      "immediate_payment",
+      "cart_eligible"
+    ],
+    "warranty": "Sin garantía",
+    "catalog_product_id": null,
+    "domain_id": "MLA-T_SHIRTS",
+    "deal_ids": [],
+    "automatic_relist": false,
+    "date_created": "2026-02-09T15:11:48.628Z",
+    "last_updated": "2026-02-09T16:37:34.353Z",
+    "catalog_listing": false,
+    "channels": [
+      "marketplace"
+    ]
+  },
+  {
+    "id": "MLA1674399761",
+    "site_id": "MLA",
+    "title": "Chomba De Rugby Hombre Rayada Celeste",
+    "seller_id": 3185982366,
+    "category_id": "MLA115162",
+    "price": 230000,
+    "base_price": 230000,
+    "original_price": null,
+    "currency_id": "ARS",
+    "initial_quantity": 67,
+    "available_quantity": 67,
+    "sold_quantity": 0,
+    "sale_terms": [
+      {
+        "id": "WARRANTY_TYPE",
+        "name": "Tipo de garantía",
+        "value_id": "2230279",
+        "value_name": "Garantía de fábrica",
+        "value_struct": null,
+        "value_type": "list",
+        "values": [
+          {
+            "id": "2230279",
+            "name": "Garantía de fábrica",
+            "struct": null
+          }
+        ]
+      },
+      {
+        "id": "WARRANTY_TIME",
+        "name": "Tiempo de garantía",
+        "value_id": null,
+        "value_name": "1 años",
+        "value_struct": {
+          "number": 1,
+          "unit": "años"
+        },
+        "value_type": "number_unit",
+        "values": [
+          {
+            "id": null,
+            "name": "1 años",
+            "struct": {
+              "number": 1,
+              "unit": "años"
+            }
+          }
+        ]
+      },
+      {
+        "id": "INSTALLMENTS_CAMPAIGN",
+        "name": "Campaña de cuotas",
+        "value_id": null,
+        "value_name": "pcj-co-funded",
+        "value_struct": null,
+        "value_type": "string",
+        "values": [
+          {
+            "id": null,
+            "name": "pcj-co-funded",
+            "struct": null
+          }
+        ]
+      }
+    ],
+    "buying_mode": "buy_it_now",
+    "listing_type_id": "gold_special",
+    "start_time": "2026-02-10T11:25:38.615Z",
+    "stop_time": "2046-02-05T04:00:00.000Z",
+    "end_time": "2046-02-05T04:00:00.000Z",
+    "expiration_time": "2026-05-01T12:44:50.308Z",
+    "condition": "new",
+    "permalink": "https://articulo.mercadolibre.com.ar/MLA-1674399761-chomba-de-rugby-hombre-rayada-celeste-_JM",
+    "thumbnail_id": "925277-MLA106353419970_022026",
+    "thumbnail": "http://http2.mlstatic.com/D_925277-MLA106353419970_022026-I.jpg",
+    "pictures": [
+      {
+        "id": "925277-MLA106353419970_022026",
+        "url": "http://http2.mlstatic.com/D_925277-MLA106353419970_022026-O.jpg",
+        "secure_url": "https://http2.mlstatic.com/D_925277-MLA106353419970_022026-O.jpg",
+        "size": "373x500",
+        "max_size": "732x981",
+        "quality": ""
+      },
+      {
+        "id": "896110-MLA106353421532_022026",
+        "url": "http://http2.mlstatic.com/D_896110-MLA106353421532_022026-O.jpg",
+        "secure_url": "https://http2.mlstatic.com/D_896110-MLA106353421532_022026-O.jpg",
+        "size": "342x500",
+        "max_size": "692x1009",
+        "quality": ""
+      }
+    ],
+    "video_id": null,
+    "descriptions": [],
+    "accepts_mercadopago": true,
+    "shipping": {
+      "mode": "me2",
+      "methods": [],
+      "tags": [
+        "local_pick_up_not_allowed",
+        "mandatory_free_shipping"
+      ],
+      "dimensions": null,
+      "local_pick_up": false,
+      "free_shipping": true,
+      "logistic_type": "xd_drop_off",
+      "store_pick_up": false
+    },
+    "attributes": [
+      {
+        "id": "GIFTABLE",
+        "name": "Regalable",
+        "value_id": "54973164",
+        "value_name": "vppfull",
+        "value_struct": null,
+        "values": [
+          {
+            "id": "54973164",
+            "name": "vppfull",
+            "struct": null
+          }
+        ],
+        "value_type": "string"
+      },
+      {
+        "id": "AGE_GROUP",
+        "name": "Edad",
+        "value_id": "6725189",
+        "value_name": "Adultos",
+        "value_struct": null,
+        "values": [
+          {
+            "id": "6725189",
+            "name": "Adultos",
+            "struct": null
+          }
+        ],
+        "value_type": "list"
+      },
+      {
+        "id": "BRAND",
+        "name": "Marca",
+        "value_id": "276243",
+        "value_name": "Genérica",
+        "value_struct": null,
+        "values": [
+          {
+            "id": "276243",
+            "name": "Genérica",
+            "struct": null
+          }
+        ],
+        "value_type": "string"
+      },
+      {
+        "id": "GARMENT_TYPE",
+        "name": "Tipo de prenda",
+        "value_id": "12038971",
+        "value_name": "Chomba",
+        "value_struct": null,
+        "values": [
+          {
+            "id": "12038971",
+            "name": "Chomba",
+            "struct": null
+          }
+        ],
+        "value_type": "list"
+      },
+      {
+        "id": "GENDER",
+        "name": "Género",
+        "value_id": "339666",
+        "value_name": "Hombre",
+        "value_struct": null,
+        "values": [
+          {
+            "id": "339666",
+            "name": "Hombre",
+            "struct": null
+          }
+        ],
+        "value_type": "list"
+      },
+      {
+        "id": "IS_EMERGING_BRAND",
+        "name": "Es marca emergente",
+        "value_id": "242084",
+        "value_name": "No",
+        "value_struct": null,
+        "values": [
+          {
+            "id": "242084",
+            "name": "No",
+            "struct": null
+          }
+        ],
+        "value_type": "boolean"
+      },
+      {
+        "id": "IS_HIGHLIGHT_BRAND",
+        "name": "Es marca destacada",
+        "value_id": "242084",
+        "value_name": "No",
+        "value_struct": null,
+        "values": [
+          {
+            "id": "242084",
+            "name": "No",
+            "struct": null
+          }
+        ],
+        "value_type": "boolean"
+      },
+      {
+        "id": "IS_TOM_BRAND",
+        "name": "Es marca TOM",
+        "value_id": "242084",
+        "value_name": "No",
+        "value_struct": null,
+        "values": [
+          {
+            "id": "242084",
+            "name": "No",
+            "struct": null
+          }
+        ],
+        "value_type": "boolean"
+      },
+      {
+        "id": "ITEM_CONDITION",
+        "name": "Condición del ítem",
+        "value_id": "2230284",
+        "value_name": "Nuevo",
+        "value_struct": null,
+        "values": [
+          {
+            "id": "2230284",
+            "name": "Nuevo",
+            "struct": null
+          }
+        ],
+        "value_type": "list"
+      },
+      {
+        "id": "MODEL",
+        "name": "Modelo",
+        "value_id": null,
+        "value_name": "Polo",
+        "value_struct": null,
+        "values": [
+          {
+            "id": null,
+            "name": "Polo",
+            "struct": null
+          }
+        ],
+        "value_type": "string"
+      },
+      {
+        "id": "RECOMMENDED_SPORTS",
+        "name": "Deportes recomendados",
+        "value_id": "22742679",
+        "value_name": "Rugby",
+        "value_struct": null,
+        "values": [
+          {
+            "id": "22742679",
+            "name": "Rugby",
+            "struct": null
+          }
+        ],
+        "value_type": "string"
+      },
+      {
+        "id": "SELLER_PACKAGE_HEIGHT",
+        "name": "Altura del paquete del seller",
+        "value_id": null,
+        "value_name": "36 cm",
+        "value_struct": null,
+        "values": [
+          {
+            "id": null,
+            "name": "36 cm",
+            "struct": {
+              "number": 36,
+              "unit": "cm"
+            }
+          }
+        ],
+        "value_type": "number_unit"
+      },
+      {
+        "id": "SELLER_PACKAGE_LENGTH",
+        "name": "Largo del paquete del seller",
+        "value_id": null,
+        "value_name": "3 cm",
+        "value_struct": null,
+        "values": [
+          {
+            "id": null,
+            "name": "3 cm",
+            "struct": {
+              "number": 3,
+              "unit": "cm"
+            }
+          }
+        ],
+        "value_type": "number_unit"
+      },
+      {
+        "id": "SELLER_PACKAGE_WEIGHT",
+        "name": "Peso del paquete del seller",
+        "value_id": null,
+        "value_name": "230 g",
+        "value_struct": null,
+        "values": [
+          {
+            "id": null,
+            "name": "230 g",
+            "struct": {
+              "number": 230,
+              "unit": "g"
+            }
+          }
+        ],
+        "value_type": "number_unit"
+      },
+      {
+        "id": "SELLER_PACKAGE_WIDTH",
+        "name": "Ancho del paquete del seller",
+        "value_id": null,
+        "value_name": "30 cm",
+        "value_struct": null,
+        "values": [
+          {
+            "id": null,
+            "name": "30 cm",
+            "struct": {
+              "number": 30,
+              "unit": "cm"
+            }
+          }
+        ],
+        "value_type": "number_unit"
+      },
+      {
+        "id": "SIZE_GRID_ID",
+        "name": "ID de la guía de talles",
+        "value_id": null,
+        "value_name": "4862497",
+        "value_struct": null,
+        "values": [
+          {
+            "id": null,
+            "name": "4862497",
+            "struct": null
+          }
+        ],
+        "value_type": "grid_id"
+      },
+      {
+        "id": "SLEEVE_TYPE",
+        "name": "Tipo de manga",
+        "value_id": "466804",
+        "value_name": "Corta",
+        "value_struct": null,
+        "values": [
+          {
+            "id": "466804",
+            "name": "Corta",
+            "struct": null
+          }
+        ],
+        "value_type": "list"
+      },
+      {
+        "id": "T_SHIRT_COLLAR_TYPE",
+        "name": "Tipo de cuello",
+        "value_id": "466789",
+        "value_name": "Polo",
+        "value_struct": null,
+        "values": [
+          {
+            "id": "466789",
+            "name": "Polo",
+            "struct": null
+          }
+        ],
+        "value_type": "string"
+      }
+    ],
+    "variations": [
+      {
+        "id": 196987641401,
+        "price": 230000,
+        "attribute_combinations": [
+          {
+            "id": "COLOR",
+            "name": "Color",
+            "value_id": "52021",
+            "value_name": "Celeste",
+            "value_struct": null,
+            "values": [
+              {
+                "id": "52021",
+                "name": "Celeste",
+                "struct": null
+              }
+            ],
+            "value_type": "string"
+          },
+          {
+            "id": "FABRIC_DESIGN",
+            "name": "Diseño de la tela",
+            "value_id": "508607",
+            "value_name": "Rayas",
+            "value_struct": null,
+            "values": [
+              {
+                "id": "508607",
+                "name": "Rayas",
+                "struct": null
+              }
+            ],
+            "value_type": "string"
+          },
+          {
+            "id": "SIZE",
+            "name": "Talle",
+            "value_id": "433336",
+            "value_name": "XL",
+            "value_struct": null,
+            "values": [
+              {
+                "id": "433336",
+                "name": "XL",
+                "struct": null
+              }
+            ],
+            "value_type": "string"
+          }
+        ],
+        "available_quantity": 67,
+        "sold_quantity": 0,
+        "sale_terms": [],
+        "picture_ids": [
+          "925277-MLA106353419970_022026",
+          "896110-MLA106353421532_022026"
+        ],
+        "seller_custom_field": null,
+        "catalog_product_id": null,
+        "inventory_id": null,
+        "item_relations": [],
+        "user_product_id": "MLAU3789116296"
+      }
+    ],
+    "status": "active",
+    "sub_status": [],
+    "tags": [
+      "pcj-co-funded",
+      "good_quality_thumbnail",
+      "test_item",
+      "immediate_payment",
+      "cart_eligible"
+    ],
+    "warranty": "Garantía de fábrica: 1 años",
+    "catalog_product_id": null,
+    "domain_id": "MLA-SPORT_T_SHIRTS",
+    "deal_ids": [],
+    "automatic_relist": false,
+    "date_created": "2026-02-10T11:25:38.777Z",
+    "last_updated": "2026-02-10T12:44:50.399Z",
+    "catalog_listing": false,
+    "channels": [
+      "marketplace"
+    ]
+  }
+]

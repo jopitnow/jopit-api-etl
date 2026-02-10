@@ -1,0 +1,415 @@
+[
+  {
+    "id": "698b4be2047345cbb2019eff",
+    "shop_id": "698afd652e7d56c5acc1ad1d",
+    "user_id": "mUkOhiP98HYaGChphXEN7bccajo1",
+    "name": "Remera Retro Hombre Los Pumas",
+    "description": "Genérico - Remera Retro Hombre Los Pumas",
+    "status": "active",
+    "category": {
+      "id": "698b4be2047345cbb2019f00",
+      "name": "Ropa"
+    },
+    "delivery": {
+      "fragile": false,
+      "dimensions": {
+        "weight": 500,
+        "length": 30,
+        "height": 5,
+        "width": 25
+      }
+    },
+    "attributes": {
+      "condition": "new",
+      "gender": "hombre",
+      "composition": "Algodón",
+      "meli_attributes": [
+        {
+          "id": "AGE_GROUP",
+          "name": "Edad",
+          "value_id": "6725189",
+          "value_name": "Adultos"
+        },
+        {
+          "id": "BRAND",
+          "name": "Marca",
+          "value_id": "35926039",
+          "value_name": "Genérico"
+        },
+        {
+          "id": "COMPOSITION",
+          "name": "Composición",
+          "value_id": "466793",
+          "value_name": "Algodón"
+        },
+        {
+          "id": "FABRIC_TYPE",
+          "name": "Tipo de tela",
+          "value_id": "12039023",
+          "value_name": "Gabardina"
+        },
+        {
+          "id": "GARMENT_TYPE",
+          "name": "Tipo de prenda",
+          "value_id": "12038970",
+          "value_name": "Remera"
+        },
+        {
+          "id": "GENDER",
+          "name": "Género",
+          "value_id": "339666",
+          "value_name": "Hombre"
+        },
+        {
+          "id": "IS_SPORTIVE",
+          "name": " Es deportiva",
+          "value_id": "242085",
+          "value_name": "Sí"
+        },
+        {
+          "id": "ITEM_CONDITION",
+          "name": "Condición del ítem",
+          "value_id": "2230284",
+          "value_name": "Nuevo"
+        },
+        {
+          "id": "MAIN_MATERIAL",
+          "name": "Material principal",
+          "value_id": "466793",
+          "value_name": "Algodón"
+        },
+        {
+          "id": "MODEL",
+          "name": "Modelo",
+          "value_name": "Retro"
+        },
+        {
+          "id": "RECOMMENDED_USES",
+          "name": "Usos recomendados",
+          "value_name": "Entrenamiento,Rugby"
+        },
+        {
+          "id": "SALE_FORMAT",
+          "name": "Formato de venta",
+          "value_id": "1359391",
+          "value_name": "Unidad"
+        },
+        {
+          "id": "SLEEVE_TYPE",
+          "name": "Tipo de manga",
+          "value_id": "466805",
+          "value_name": "Larga"
+        },
+        {
+          "id": "WEDGE_SHAPE",
+          "name": "Forma del calce",
+          "value_id": "34241296",
+          "value_name": "Oversized"
+        },
+        {
+          "id": "sale_term_warranty_type",
+          "name": "Tipo de garantía",
+          "value_id": "6150835",
+          "value_name": "Sin garantía"
+        }
+      ]
+    },
+    "size_guide": {
+      "type": "standard",
+      "body_part": "upper",
+      "has_measurements": true,
+      "is_one_size": false,
+      "measurement_source": "mercadolibre",
+      "external_size_grid_id": "4566230",
+      "sizes": [
+        {
+          "size_equivalence": "XS",
+          "chest_circumference": 93,
+          "waist_circumference": 76
+        },
+        {
+          "size_equivalence": "S",
+          "chest_circumference": 99,
+          "waist_circumference": 80
+        },
+        {
+          "size_equivalence": "M",
+          "chest_circumference": 105,
+          "waist_circumference": 86
+        },
+        {
+          "size_equivalence": "L",
+          "chest_circumference": 111,
+          "waist_circumference": 92
+        },
+        {
+          "size_equivalence": "XL",
+          "chest_circumference": 117,
+          "waist_circumference": 98
+        },
+        {
+          "size_equivalence": "2XL",
+          "chest_circumference": 123,
+          "waist_circumference": 104
+        }
+      ]
+    },
+    "variants": [
+      {
+        "color_id": "52021",
+        "color_name": "Celeste",
+        "color_hex": "#000000",
+        "is_main": true,
+        "images": [
+          "https://http2.mlstatic.com/D_809049-MLA106292095942_022026-O.jpg",
+          "https://http2.mlstatic.com/D_651212-MLA106292336684_022026-O.jpg"
+        ],
+        "size_stock": [
+          {
+            "size_label": "XL",
+            "stock": 25,
+            "sku": "MLAU3778123541"
+          },
+          {
+            "size_label": "L",
+            "stock": 1,
+            "sku": "MLAU3778123543"
+          }
+        ]
+      }
+    ],
+    "price": {
+      "id": "",
+      "item_id": "",
+      "shop_id": "698afd652e7d56c5acc1ad1d",
+      "amount": 90000,
+      "currency": {
+        "id": "ARS",
+        "symbol": "$",
+        "decimal_divider": ",",
+        "thousands_divider": "."
+      }
+    },
+    "source": {
+      "source_type": "meli",
+      "external_id": "MLA2847710648",
+      "external_sku": "MLAU3778123541",
+      "batch_id": "meli-mUkOhiP98HYaGChphXEN7bccajo1",
+      "imported_at": "2026-02-10T16:16:50.498770047+01:00",
+      "etl_version": "1.0.0",
+      "transform_metadata": {
+        "attributes_count": "22",
+        "original_category_id": "MLA109042",
+        "original_condition": "new",
+        "original_domain_id": "MLA-T_SHIRTS",
+        "original_status": "active",
+        "pictures_count": "2",
+        "variations_count": "2"
+      }
+    }
+  },
+  {
+    "id": "698b4be2047345cbb2019f01",
+    "shop_id": "698afd652e7d56c5acc1ad1d",
+    "user_id": "mUkOhiP98HYaGChphXEN7bccajo1",
+    "name": "Chomba De Rugby Hombre Rayada Celeste",
+    "description": "Genérica - Chomba De Rugby Hombre Rayada Celeste",
+    "status": "active",
+    "category": {
+      "id": "698b4be2047345cbb2019f02",
+      "name": "Ropa"
+    },
+    "delivery": {
+      "fragile": false,
+      "dimensions": {
+        "weight": 500,
+        "length": 30,
+        "height": 5,
+        "width": 25
+      }
+    },
+    "attributes": {
+      "condition": "new",
+      "gender": "hombre",
+      "meli_attributes": [
+        {
+          "id": "AGE_GROUP",
+          "name": "Edad",
+          "value_id": "6725189",
+          "value_name": "Adultos"
+        },
+        {
+          "id": "BRAND",
+          "name": "Marca",
+          "value_id": "276243",
+          "value_name": "Genérica"
+        },
+        {
+          "id": "GARMENT_TYPE",
+          "name": "Tipo de prenda",
+          "value_id": "12038971",
+          "value_name": "Chomba"
+        },
+        {
+          "id": "GENDER",
+          "name": "Género",
+          "value_id": "339666",
+          "value_name": "Hombre"
+        },
+        {
+          "id": "ITEM_CONDITION",
+          "name": "Condición del ítem",
+          "value_id": "2230284",
+          "value_name": "Nuevo"
+        },
+        {
+          "id": "MODEL",
+          "name": "Modelo",
+          "value_name": "Polo"
+        },
+        {
+          "id": "RECOMMENDED_SPORTS",
+          "name": "Deportes recomendados",
+          "value_id": "22742679",
+          "value_name": "Rugby"
+        },
+        {
+          "id": "SELLER_PACKAGE_HEIGHT",
+          "name": "Altura del paquete del seller",
+          "value_name": "36 cm"
+        },
+        {
+          "id": "SELLER_PACKAGE_LENGTH",
+          "name": "Largo del paquete del seller",
+          "value_name": "3 cm"
+        },
+        {
+          "id": "SELLER_PACKAGE_WEIGHT",
+          "name": "Peso del paquete del seller",
+          "value_name": "230 g"
+        },
+        {
+          "id": "SELLER_PACKAGE_WIDTH",
+          "name": "Ancho del paquete del seller",
+          "value_name": "30 cm"
+        },
+        {
+          "id": "SLEEVE_TYPE",
+          "name": "Tipo de manga",
+          "value_id": "466804",
+          "value_name": "Corta"
+        },
+        {
+          "id": "T_SHIRT_COLLAR_TYPE",
+          "name": "Tipo de cuello",
+          "value_id": "466789",
+          "value_name": "Polo"
+        },
+        {
+          "id": "sale_term_warranty_type",
+          "name": "Tipo de garantía",
+          "value_id": "2230279",
+          "value_name": "Garantía de fábrica"
+        },
+        {
+          "id": "sale_term_warranty_time",
+          "name": "Tiempo de garantía",
+          "value_name": "1 años"
+        },
+        {
+          "id": "sale_term_installments_campaign",
+          "name": "Campaña de cuotas",
+          "value_name": "pcj-co-funded"
+        }
+      ]
+    },
+    "size_guide": {
+      "type": "standard",
+      "body_part": "upper",
+      "has_measurements": true,
+      "is_one_size": false,
+      "measurement_source": "mercadolibre",
+      "external_size_grid_id": "4862497",
+      "sizes": [
+        {
+          "size_equivalence": "XS",
+          "chest_circumference": 93,
+          "waist_circumference": 76
+        },
+        {
+          "size_equivalence": "S",
+          "chest_circumference": 99,
+          "waist_circumference": 80
+        },
+        {
+          "size_equivalence": "M",
+          "chest_circumference": 105,
+          "waist_circumference": 86
+        },
+        {
+          "size_equivalence": "L",
+          "chest_circumference": 111,
+          "waist_circumference": 92
+        },
+        {
+          "size_equivalence": "XL",
+          "chest_circumference": 117,
+          "waist_circumference": 98
+        },
+        {
+          "size_equivalence": "2XL",
+          "chest_circumference": 123,
+          "waist_circumference": 104
+        }
+      ]
+    },
+    "variants": [
+      {
+        "color_id": "52021",
+        "color_name": "Celeste",
+        "color_hex": "#000000",
+        "is_main": true,
+        "images": [
+          "https://http2.mlstatic.com/D_925277-MLA106353419970_022026-O.jpg",
+          "https://http2.mlstatic.com/D_896110-MLA106353421532_022026-O.jpg"
+        ],
+        "size_stock": [
+          {
+            "size_label": "XL",
+            "stock": 67,
+            "sku": "MLAU3789116296"
+          }
+        ]
+      }
+    ],
+    "price": {
+      "id": "",
+      "item_id": "",
+      "shop_id": "698afd652e7d56c5acc1ad1d",
+      "amount": 230000,
+      "currency": {
+        "id": "ARS",
+        "symbol": "$",
+        "decimal_divider": ",",
+        "thousands_divider": "."
+      }
+    },
+    "source": {
+      "source_type": "meli",
+      "external_id": "MLA1674399761",
+      "external_sku": "MLAU3789116296",
+      "batch_id": "meli-mUkOhiP98HYaGChphXEN7bccajo1",
+      "imported_at": "2026-02-10T16:16:50.889886112+01:00",
+      "etl_version": "1.0.0",
+      "transform_metadata": {
+        "attributes_count": "18",
+        "original_category_id": "MLA115162",
+        "original_condition": "new",
+        "original_domain_id": "MLA-SPORT_T_SHIRTS",
+        "original_status": "active",
+        "pictures_count": "2",
+        "variations_count": "1"
+      }
+    }
+  }
+]

@@ -69,11 +69,18 @@ func Transform(records []map[string]string, config models.CompanyLayout, userID 
 	var items []models.Item
 
 	batchID := generateBatchID(6)
+	now := time.Now()
 
 	for _, rec := range records {
 		externalCat := rec[config.CategoryMap["category_name"]]
 		mappedID := config.CategoryMap[externalCat]
 		mappedName := canonicalCategories[mappedID]
+
+		cat := models.ItemCategory{
+			ID:   mappedID,
+			Name: mappedName,
+		}
+		cat.SetIDs()
 
 		item := models.Item{
 			ID:          rec[config.CategoryMap["id"]],
@@ -82,17 +89,49 @@ func Transform(records []map[string]string, config models.CompanyLayout, userID 
 			Name:        rec[config.CategoryMap["name"]],
 			Description: rec[config.CategoryMap["description"]],
 			Status:      "active",
-			BatchID:     batchID,
-			Fragile:     strings.ToLower(rec[config.CategoryMap["fragile"]]) == "true",
-			Category: models.Category{
-				ID:   mappedID,
-				Name: mappedName,
+			Category:    cat,
+			Delivery: models.Delivery{
+				Fragile: strings.ToLower(rec[config.CategoryMap["fragile"]]) == "true",
+				Dimensions: models.Dimensions{
+					Weight: parseInt(rec[config.CategoryMap["weight"]]),
+					Length: parseInt(rec[config.CategoryMap["length"]]),
+					Height: parseInt(rec[config.CategoryMap["height"]]),
+					Width:  parseInt(rec[config.CategoryMap["width"]]),
+				},
 			},
-			Dimensions: models.Dimensions{
-				Weight: parseInt(rec[config.CategoryMap["weight"]]),
-				Length: parseInt(rec[config.CategoryMap["length"]]),
-				Height: parseInt(rec[config.CategoryMap["height"]]),
-				Width:  parseInt(rec[config.CategoryMap["width"]]),
+			Variants: []models.Variant{
+				{
+					ColorID:   "default",
+					ColorName: "Default",
+					ColorHex:  "#000000",
+					IsMain:    true,
+					Images:    []models.Image{},
+					SizeStock: []models.SizeStock{},
+				},
+			},
+			Attributes: models.Attributes{
+				Condition: "new",
+			},
+			Price: models.Price{
+				ShopID: config.ShopID,
+				Amount: float64(parseInt(rec[config.CategoryMap["price"]])),
+				Currency: models.Currency{
+					ID:               "ARS",
+					Symbol:           "$",
+					DecimalDivider:   ",",
+					ThousandsDivider: ".",
+				},
+			},
+			Source: &models.Source{
+				SourceType: "csv",
+				ExternalID: rec[config.CategoryMap["id"]],
+				BatchID:    batchID,
+				ImportedAt: now,
+				EtlVersion: "1.0.0",
+				TransformMetadata: map[string]string{
+					"import_source": "csv",
+					"config_id":     config.ID,
+				},
 			},
 		}
 		items = append(items, item)

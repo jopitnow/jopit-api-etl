@@ -8,5 +8,5 @@ type CategoryDTO struct {
 }
 
 type CategoriesDTO struct {
-	CategoryDTO []models.Category `json:"categories"`
+	CategoryDTO []models.ItemCategory `json:"categories"`
 }

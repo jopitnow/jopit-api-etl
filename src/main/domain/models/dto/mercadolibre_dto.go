@@ -169,3 +169,49 @@ type MeliSearchResponse struct {
 	} `json:"paging"`
 	Results []MeliItemResponse `json:"results"`
 }
+
+// ============== Size Chart DTOs ==============
+
+// MeliMeasurementStruct represents measurement with unit
+type MeliMeasurementStruct struct {
+	Number float64 `json:"number"`
+	Unit   string  `json:"unit"`
+}
+
+// MeliChartAttributeValue represents a value in a chart attribute
+type MeliChartAttributeValue struct {
+	ID     *string                `json:"id,omitempty"`
+	Name   string                 `json:"name"`
+	Struct *MeliMeasurementStruct `json:"struct,omitempty"`
+}
+
+// MeliChartAttribute represents an attribute in a size chart row
+type MeliChartAttribute struct {
+	ID     string                    `json:"id"`
+	Name   string                    `json:"name"`
+	Label  string                    `json:"label,omitempty"`
+	Values []MeliChartAttributeValue `json:"values"`
+}
+
+// MeliChartRow represents a row in the size chart
+type MeliChartRow struct {
+	ID          string               `json:"id"`
+	Attributes  []MeliChartAttribute `json:"attributes"`
+	ValidateRow bool                 `json:"validate_row"`
+}
+
+// MeliSizeChartResponse represents the full size chart response
+type MeliSizeChartResponse struct {
+	ID              string               `json:"id"`
+	Names           map[string]string    `json:"names"`
+	DomainID        string               `json:"domain_id"`
+	SiteID          string               `json:"site_id"`
+	Type            string               `json:"type"`
+	SellerID        int64                `json:"seller_id"`
+	MeasureType     string               `json:"measure_type"`
+	MainAttributeID string               `json:"main_attribute_id"`
+	Attributes      []MeliChartAttribute `json:"attributes"`
+	Rows            []MeliChartRow       `json:"rows"`
+	TemplateID      string               `json:"template_id"`
+	ConversionType  string               `json:"conversion_type,omitempty"`
+}

@@ -33,7 +33,7 @@ func BuildDependencies() (HandlersStruct, error) {
 	// Services
 	mercadoLibreCredentialsService := services.NewMercadoLibreCredentialsService(mercadoLibreCredentialsRepository, shopsClient, mercadoLibreAuthClient)
 	mercadoLibreService := services.NewMercadoLibreService(mercadoLibreClient, mercadoLibreCredentialsService)
-	etlService := services.NewEtlService(fetchApiClient, itemsClient, shopsClient)
+	etlService := services.NewEtlService(fetchApiClient, itemsClient, shopsClient, mercadoLibreService)
 	companyLayoutService := services.NewCompanyLayoutService(caompanyLayoutRepository, shopsClient)
 
 	// Handlers

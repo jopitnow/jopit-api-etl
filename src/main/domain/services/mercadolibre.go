@@ -16,7 +16,8 @@ type MercadoLibreService interface {
 	GetItems(ctx context.Context, meliItemIDs []string) ([]dto.MeliItemResponse, apierrors.ApiError)
 	GetUserItems(ctx context.Context) (dto.MeliUserItemsSearchResponse, apierrors.ApiError)
 	SearchItemsBySeller(ctx context.Context, siteID string) (dto.MeliUserItemsSearchResponse, apierrors.ApiError)
-	Load(ctx context.Context) ([]dto.MeliItemResponse, apierrors.ApiError)
+	GetSizeChart(ctx context.Context, chartID string) (dto.MeliSizeChartResponse, apierrors.ApiError)
+	GetUserItemsDetails(ctx context.Context) ([]dto.MeliItemResponse, apierrors.ApiError)
 }
 
 type mercadoLibreService struct {
@@ -114,7 +115,7 @@ func (s *mercadoLibreService) GetUserItems(ctx context.Context) (dto.MeliUserIte
 	return result, nil
 }
 
-func (s *mercadoLibreService) Load(ctx context.Context) ([]dto.MeliItemResponse, apierrors.ApiError) {
+func (s *mercadoLibreService) GetUserItemsDetails(ctx context.Context) ([]dto.MeliItemResponse, apierrors.ApiError) {
 
 	userID := fmt.Sprint(ctx.Value(goauth.FirebaseUserID))
 
@@ -146,4 +147,22 @@ func (s *mercadoLibreService) Load(ctx context.Context) ([]dto.MeliItemResponse,
 
 	return itemsDetails, nil
 
+}
+
+func (s *mercadoLibreService) GetSizeChart(ctx context.Context, chartID string) (dto.MeliSizeChartResponse, apierrors.ApiError) {
+	userID := fmt.Sprint(ctx.Value(goauth.FirebaseUserID))
+
+	// Get credentials with auto-refresh
+	credentials, err := s.credentialsService.GetCredentialsByUserID(ctx, userID)
+	if err != nil {
+		return dto.MeliSizeChartResponse{}, err
+	}
+
+	// Call MercadoLibre API to get size chart
+	sizeChart, err := s.meliClient.GetSizeChart(ctx, chartID, credentials.AccessToken)
+	if err != nil {
+		return dto.MeliSizeChartResponse{}, err
+	}
+
+	return sizeChart, nil
 }

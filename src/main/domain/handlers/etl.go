@@ -123,12 +123,12 @@ func (h EtlHandler) Delete(c *gin.Context) {
 
 // LoadMercadoLibre godoc
 // @Summary Load items from MercadoLibre
-// @Description Fetch item IDs from MercadoLibre search, then batch fetch full item details
+// @Description Fetch items from MercadoLibre, transform to Jopit format, and load into Items API
 // @Tags ETL
 // @Accept  json
 // @Produce  json
 // @Param Authorization header string true "Bearer token"
-// @Success 200 {object} map[string]interface{}
+// @Success 200 {object} services.ETLResult
 // @Failure 401 "Unauthorized"
 // @Failure 500 "Internal Server Error"
 // @Router /etl/mercadolibre/load [post]
@@ -143,36 +143,20 @@ func (h EtlHandler) LoadMercadoLibre(c *gin.Context) {
 	ctx := context.WithValue(c.Request.Context(), goauth.FirebaseUserID, userID)
 	ctx = context.WithValue(ctx, goauth.FirebaseAuthHeader, c.GetHeader("Authorization"))
 
-	// Step 1: Search for user items to get the list of item IDs
-	searchResult, apiErr := h.MercadoLibreService.GetUserItems(ctx)
+	// Execute full ETL process (Extract, Transform, Load)
+	result, apiErr := h.Service.LoadMercadoLibre(ctx)
 	if apiErr != nil {
 		c.Error(apiErr)
-		c.JSON(apiErr.Status(), apiErr)
+		// Return partial results even if there's an error
+		if result != nil {
+			c.JSON(apiErr.Status(), result)
+		} else {
+			c.JSON(apiErr.Status(), apiErr)
+		}
 		return
 	}
 
-	if len(searchResult.Results) == 0 {
-		c.JSON(http.StatusOK, gin.H{
-			"message":    "No items found for this seller",
-			"item_count": 0,
-			"items":      []interface{}{},
-		})
-		return
-	}
-
-	// Step 2: Batch fetch full details for all items using MercadoLibre's multi-get endpoint
-	itemsDetails, apiErr := h.MercadoLibreService.GetItems(ctx, searchResult.Results)
-	if apiErr != nil {
-		c.Error(apiErr)
-		c.JSON(apiErr.Status(), apiErr)
-		return
-	}
-
-	c.JSON(http.StatusOK, gin.H{
-		"message":    "MercadoLibre items retrieved and processed successfully",
-		"item_count": len(itemsDetails),
-		"items":      itemsDetails,
-	})
+	c.JSON(http.StatusOK, result)
 }
 
 // GetMercadoLibreItem godoc

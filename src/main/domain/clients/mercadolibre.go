@@ -31,6 +31,7 @@ type MercadoLibreClient interface {
 	GetItems(ctx context.Context, meliItemIDs []string, accessToken string) ([]dto.MeliItemResponse, apierrors.ApiError)
 	GetUserItems(ctx context.Context, meliUserID int64, accessToken string) (dto.MeliUserItemsSearchResponse, apierrors.ApiError)
 	SearchItems(ctx context.Context, filters dto.MercadoLibreSearchFilters, accessToken string) (dto.MeliSearchResponse, apierrors.ApiError)
+	GetSizeChart(ctx context.Context, chartID string, accessToken string) (dto.MeliSizeChartResponse, apierrors.ApiError)
 }
 
 type mercadoLibreClient struct {
@@ -215,4 +216,37 @@ func (c *mercadoLibreClient) SearchItems(ctx context.Context, filters dto.Mercad
 	}
 
 	return searchResult, nil
+}
+
+func (c *mercadoLibreClient) GetSizeChart(ctx context.Context, chartID string, accessToken string) (dto.MeliSizeChartResponse, apierrors.ApiError) {
+	ctx, span := tracerMeliClient.Start(ctx, "GetSizeChart")
+	defer span.End()
+
+	if strings.TrimSpace(chartID) == "" {
+		return dto.MeliSizeChartResponse{}, apierrors.NewWrapAndTraceError(span, apierrors.NewApiError("chart_id is required for MercadoLibre size chart", "bad_request", http.StatusBadRequest, apierrors.CauseList{}))
+	}
+
+	headers := http.Header{}
+	otel.GetTextMapPropagator().Inject(ctx, propagation.HeaderCarrier(headers))
+	if accessToken != "" {
+		headers.Add("Authorization", "Bearer "+accessToken)
+	}
+
+	endpoint := fmt.Sprintf("/catalog/charts/%s", chartID)
+	response := c.Builder.Get(endpoint, rest.Context(ctx), rest.Headers(headers))
+
+	if response.Response == nil {
+		return dto.MeliSizeChartResponse{}, apierrors.NewWrapAndTraceError(span, apierrors.NewApiError("unexpected error calling MercadoLibre size chart endpoint", "internal_server_error", http.StatusInternalServerError, apierrors.CauseList{}))
+	}
+
+	if response.StatusCode != http.StatusOK {
+		return dto.MeliSizeChartResponse{}, apierrors.NewWrapAndTraceError(span, apierrors.NewApiError(fmt.Sprintf("unexpected response from MercadoLibre size chart endpoint, status: %d", response.StatusCode), "bad_gateway", http.StatusBadGateway, apierrors.CauseList{response}))
+	}
+
+	var sizeChart dto.MeliSizeChartResponse
+	if err := json.Unmarshal(response.Bytes(), &sizeChart); err != nil {
+		return dto.MeliSizeChartResponse{}, apierrors.NewWrapAndTraceError(span, apierrors.NewApiError("error decoding MercadoLibre size chart response", "internal_server_error", http.StatusInternalServerError, apierrors.CauseList{err}))
+	}
+
+	return sizeChart, nil
 }

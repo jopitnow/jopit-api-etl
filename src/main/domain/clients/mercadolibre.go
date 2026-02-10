@@ -30,6 +30,7 @@ type MercadoLibreClient interface {
 	GetItem(ctx context.Context, meliItemID string, accessToken string) (dto.MeliItemResponse, apierrors.ApiError)
 	GetItems(ctx context.Context, meliItemIDs []string, accessToken string) ([]dto.MeliItemResponse, apierrors.ApiError)
 	GetUserItems(ctx context.Context, meliUserID int64, accessToken string) (dto.MeliUserItemsSearchResponse, apierrors.ApiError)
+	GetUserItemsWithPagination(ctx context.Context, meliUserID int64, accessToken string, offset int, limit int) (dto.MeliUserItemsSearchResponse, apierrors.ApiError)
 	SearchItems(ctx context.Context, filters dto.MercadoLibreSearchFilters, accessToken string) (dto.MeliSearchResponse, apierrors.ApiError)
 	GetSizeChart(ctx context.Context, chartID string, accessToken string) (dto.MeliSizeChartResponse, apierrors.ApiError)
 }
@@ -161,6 +162,46 @@ func (c *mercadoLibreClient) GetUserItems(ctx context.Context, meliUserID int64,
 
 	if response.StatusCode != http.StatusOK {
 		return dto.MeliUserItemsSearchResponse{}, apierrors.NewWrapAndTraceError(span, apierrors.NewApiError(fmt.Sprintf("unexpected response from MercadoLibre user items endpoint, status: %d, body: %s", response.StatusCode, string(response.Bytes())), "bad_gateway", http.StatusBadGateway, apierrors.CauseList{response}))
+	}
+
+	var searchResult dto.MeliUserItemsSearchResponse
+	if err := json.Unmarshal(response.Bytes(), &searchResult); err != nil {
+		return dto.MeliUserItemsSearchResponse{}, apierrors.NewWrapAndTraceError(span, apierrors.NewApiError("error decoding MercadoLibre user items search response", "internal_server_error", http.StatusInternalServerError, apierrors.CauseList{err}))
+	}
+
+	return searchResult, nil
+}
+
+func (c *mercadoLibreClient) GetUserItemsWithPagination(ctx context.Context, meliUserID int64, accessToken string, offset int, limit int) (dto.MeliUserItemsSearchResponse, apierrors.ApiError) {
+	ctx, span := tracerMeliClient.Start(ctx, "GetUserItemsWithPagination")
+	defer span.End()
+
+	if meliUserID == 0 {
+		return dto.MeliUserItemsSearchResponse{}, apierrors.NewWrapAndTraceError(span, apierrors.NewApiError("meli_user_id is required", "bad_request", http.StatusBadRequest, apierrors.CauseList{}))
+	}
+
+	headers := http.Header{}
+	otel.GetTextMapPropagator().Inject(ctx, propagation.HeaderCarrier(headers))
+	if accessToken != "" {
+		headers.Add("Authorization", "Bearer "+accessToken)
+	}
+
+	// Build query parameters for pagination
+	query := url.Values{}
+	query.Set("offset", fmt.Sprintf("%d", offset))
+	query.Set("limit", fmt.Sprintf("%d", limit))
+
+	endpoint := fmt.Sprintf("/users/%d/items/search?%s", meliUserID, query.Encode())
+	response := c.Builder.Get(endpoint, rest.Context(ctx), rest.Headers(headers))
+
+	if response.Response == nil {
+		return dto.MeliUserItemsSearchResponse{}, apierrors.NewWrapAndTraceError(span, apierrors.NewApiError("unexpected error calling MercadoLibre user items endpoint", "internal_server_error", http.StatusInternalServerError, apierrors.CauseList{}))
+	}
+
+	if response.StatusCode != http.StatusOK {
+		return dto.MeliUserItemsSearchResponse{}, apierrors.NewWrapAndTraceError(span, apierrors.NewApiError(
+			fmt.Sprintf("unexpected response from MercadoLibre user items endpoint, status: %d", response.StatusCode),
+			"bad_gateway", http.StatusBadGateway, apierrors.CauseList{response}))
 	}
 
 	var searchResult dto.MeliUserItemsSearchResponse

@@ -32,6 +32,7 @@ type itemsClient struct {
 
 type ItemsClient interface {
 	BulkCreateItems(ctx context.Context, items []models.Item) apierrors.ApiError
+	BulkUpsertItems(ctx context.Context, items []models.Item) (*dto.BulkUpsertResponse, apierrors.ApiError)
 	BulkDeleteItems(ctx context.Context, batchID string) apierrors.ApiError
 }
 
@@ -82,6 +83,35 @@ func (c *itemsClient) BulkCreateItems(ctx context.Context, items []models.Item) 
 	}
 
 	return nil
+}
+
+func (c *itemsClient) BulkUpsertItems(ctx context.Context, items []models.Item) (*dto.BulkUpsertResponse, apierrors.ApiError) {
+
+	ctx, span := tracerClientItems.Start(ctx, "BulkUpsertItems")
+	defer span.End()
+
+	headers := http.Header{}
+	otel.GetTextMapPropagator().Inject(ctx, propagation.HeaderCarrier(headers))
+
+	reqBody := dto.BulkCreateItemsRequest{Items: items}
+
+	endpoint := "/items/bulk-upsert"
+	response := c.Client.Post(endpoint, reqBody, rest.Context(ctx), rest.Headers(headers))
+
+	if response.Err != nil || response.Response == nil {
+		return nil, apierrors.NewWrapAndTraceError(span, apierrors.NewApiError(fmt.Sprint("Unexpected error hitting items api, url: "+endpoint, "\nresponse: ", response), "error hitting Items Api", http.StatusInternalServerError, apierrors.CauseList{response}))
+	}
+
+	if response.StatusCode != http.StatusOK {
+		return nil, apierrors.NewWrapAndTraceError(span, apierrors.NewApiError(fmt.Sprint("Unexpected error hitting items api, url: "+endpoint, "\nresponse: ", response), "error hitting Items Api", http.StatusInternalServerError, apierrors.CauseList{response}))
+	}
+
+	var upsertResponse dto.BulkUpsertResponse
+	if err := response.FillUp(&upsertResponse); err != nil {
+		return nil, apierrors.NewWrapAndTraceError(span, apierrors.NewApiError("error parsing response: "+err.Error(), "internal_error", http.StatusInternalServerError, apierrors.CauseList{}))
+	}
+
+	return &upsertResponse, nil
 }
 
 func (c *itemsClient) BulkDeleteItems(ctx context.Context, batchID string) apierrors.ApiError {

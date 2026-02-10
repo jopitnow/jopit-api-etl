@@ -27,7 +27,8 @@ type EtlService interface {
 type ETLResult struct {
 	BatchID      string       `json:"batch_id"`
 	TotalItems   int          `json:"total_items"`
-	SuccessCount int          `json:"success_count"`
+	CreatedCount int          `json:"created_count"`
+	UpdatedCount int          `json:"updated_count"`
 	FailureCount int          `json:"failure_count"`
 	FailedItems  []FailedItem `json:"failed_items,omitempty"`
 }
@@ -135,8 +136,8 @@ func (s *etlService) LoadMercadoLibre(ctx context.Context) (*ETLResult, apierror
 	userID := fmt.Sprint(ctx.Value(goauth.FirebaseUserID))
 	batchID := fmt.Sprintf("meli-%s", userID)
 
-	// STEP 1: EXTRACT - Get all MercadoLibre items
-	meliItems, err := s.mercadoLibreService.GetUserItemsDetails(ctx)
+	// STEP 1: EXTRACT - Get all MercadoLibre items with pagination
+	meliItems, err := s.mercadoLibreService.GetUserItemsDetailsWithPagination(ctx, 50) // 50 items per page
 	if err != nil {
 		return nil, err
 	}
@@ -184,34 +185,41 @@ func (s *etlService) LoadMercadoLibre(ctx context.Context) (*ETLResult, apierror
 		}
 	}
 
-	// STEP 3: LOAD - Bulk insert items into Jopit Items API
-	var loadErr apierrors.ApiError
+	// STEP 3: LOAD - Bulk upsert items into Jopit Items API
+	var createdCount int64
+	var updatedCount int64
+
 	if len(jopitItems) > 0 {
-		loadErr = s.itemsClient.BulkCreateItems(ctx, jopitItems)
-		if loadErr != nil {
-			// If bulk load fails entirely, mark all as failed
+		upsertResponse, upsertErr := s.itemsClient.BulkUpsertItems(ctx, jopitItems)
+		if upsertErr != nil {
+			// If bulk upsert fails entirely, mark all as failed
 			for _, item := range jopitItems {
 				failedItems = append(failedItems, FailedItem{
 					ExternalID:   item.Source.ExternalID,
 					Title:        item.Name,
 					FailureStage: "load",
-					ErrorMessage: loadErr.Message(),
+					ErrorMessage: upsertErr.Message(),
 				})
 			}
 			jopitItems = []models.Item{} // Clear successful items
+		} else {
+			createdCount = upsertResponse.CreatedCount
+			updatedCount = upsertResponse.UpdatedCount
 		}
 	}
 
 	result := &ETLResult{
 		BatchID:      batchID,
 		TotalItems:   len(meliItems),
-		SuccessCount: len(jopitItems),
+		CreatedCount: int(createdCount),
+		UpdatedCount: int(updatedCount),
 		FailureCount: len(failedItems),
 		FailedItems:  failedItems,
 	}
 
 	// Return error only if ALL items failed
-	if result.SuccessCount == 0 && result.FailureCount > 0 {
+	successCount := result.CreatedCount + result.UpdatedCount
+	if successCount == 0 && result.FailureCount > 0 {
 		return result, apierrors.NewApiError(
 			fmt.Sprintf("all %d items failed to load", result.FailureCount),
 			"etl_failed",

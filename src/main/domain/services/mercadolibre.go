@@ -18,6 +18,7 @@ type MercadoLibreService interface {
 	SearchItemsBySeller(ctx context.Context, siteID string) (dto.MeliUserItemsSearchResponse, apierrors.ApiError)
 	GetSizeChart(ctx context.Context, chartID string) (dto.MeliSizeChartResponse, apierrors.ApiError)
 	GetUserItemsDetails(ctx context.Context) ([]dto.MeliItemResponse, apierrors.ApiError)
+	GetUserItemsDetailsWithPagination(ctx context.Context, pageSize int) ([]dto.MeliItemResponse, apierrors.ApiError)
 }
 
 type mercadoLibreService struct {
@@ -147,6 +148,55 @@ func (s *mercadoLibreService) GetUserItemsDetails(ctx context.Context) ([]dto.Me
 
 	return itemsDetails, nil
 
+}
+
+func (s *mercadoLibreService) GetUserItemsDetailsWithPagination(ctx context.Context, pageSize int) ([]dto.MeliItemResponse, apierrors.ApiError) {
+	userID := fmt.Sprint(ctx.Value(goauth.FirebaseUserID))
+
+	// Get credentials with auto-refresh
+	credentials, err := s.credentialsService.GetCredentialsByUserID(ctx, userID)
+	if err != nil {
+		return []dto.MeliItemResponse{}, err
+	}
+
+	if credentials.UserIDMeli == 0 {
+		return []dto.MeliItemResponse{}, apierrors.NewApiError("seller_id not found in credentials", "bad_request", http.StatusBadRequest, apierrors.CauseList{})
+	}
+
+	// Step 1: Fetch all item IDs with pagination
+	var allItemIDs []string
+	offset := 0
+
+	for {
+		searchResult, err := s.meliClient.GetUserItemsWithPagination(ctx, credentials.UserIDMeli, credentials.AccessToken, offset, pageSize)
+		if err != nil {
+			return []dto.MeliItemResponse{}, err
+		}
+
+		if len(searchResult.Results) == 0 {
+			break
+		}
+
+		allItemIDs = append(allItemIDs, searchResult.Results...)
+		offset += pageSize
+
+		// Check if we've received fewer results than requested (last page)
+		if len(searchResult.Results) < pageSize {
+			break
+		}
+	}
+
+	if len(allItemIDs) == 0 {
+		return []dto.MeliItemResponse{}, nil
+	}
+
+	// Step 2: Batch fetch full details for all items using MercadoLibre's multi-get endpoint
+	itemsDetails, err := s.meliClient.GetItems(ctx, allItemIDs, credentials.AccessToken)
+	if err != nil {
+		return []dto.MeliItemResponse{}, err
+	}
+
+	return itemsDetails, nil
 }
 
 func (s *mercadoLibreService) GetSizeChart(ctx context.Context, chartID string) (dto.MeliSizeChartResponse, apierrors.ApiError) {
